@@ -11,9 +11,11 @@ public:
 };
 
 char character(char start, int offset) {
-	if (!isalpha(start) || isupper(start))
+	if (!isalpha(start))
 		throw InvalidCharacterException();
 	if (!isalpha(start + offset))
+		throw InvalidRangeException();
+	if (isupper(start) && islower(start + offset) || islower(start) && isupper(start+offset))
 		throw InvalidRangeException();
 	return (start + offset);
 }
@@ -31,6 +33,9 @@ int main() {
 
 		cout << "Passing ?, 5... ";
 		cout << character('?', 5) << '\n';
+
+		cout << "Passing A, 32... ";
+		cout << character('A', 32);
 	}
 	catch (const InvalidCharacterException& e) {
 		cout << e.what();
