@@ -3,11 +3,11 @@ using namespace std;
 
 class InvalidCharacterException : public runtime_error {
 public:
-	InvalidCharacterException() : runtime_error("ERR:Invalid character") {}
+	InvalidCharacterException() : runtime_error("[ERROR: Invalid character]") {}
 };
 class InvalidRangeException : public runtime_error {
 public:
-	InvalidRangeException() : runtime_error("ERR:Invalid range") {}
+	InvalidRangeException() : runtime_error("[ERROR: Invalid range]") {}
 };
 
 char character(char start, int offset) {
@@ -21,16 +21,16 @@ char character(char start, int offset) {
 int main() {
 	try {
 		cout << "Passing a, 1... ";
-		cout << character('a', 1);
+		cout << character('a', 1) << '\n';
 
-		cout << "Passing a, -1: ";
-		cout << character('a', -1);
+		cout << "Passing a, -1... ";
+		cout << character('a', -1) << '\n';
 
-		cout << "Passing Z, -1: ";
-		cout << character('Z', -1);
+		cout << "Passing Z, -1... ";
+		cout << character('Z', -1) << '\n';
 
-		cout << "Passing ?, 5: ";
-		cout << character('?', 5);
+		cout << "Passing ?, 5... ";
+		cout << character('?', 5) << '\n';
 	}
 	catch (const InvalidCharacterException& e) {
 		cout << e.what();
