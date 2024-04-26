@@ -13,7 +13,7 @@ public:
 char character(char start, int offset) {
 	if (!isalpha(start) || isupper(start))
 		throw InvalidCharacterException();
-	if (!isdigit(offset) || (start + offset) < 'a' || (start + offset) > 'z')
+	if (!isalpha(start + offset))
 		throw InvalidRangeException();
 	return (start + offset);
 }
