@@ -17,3 +17,26 @@ char character(char start, int offset) {
 		throw InvalidRangeException();
 	return (start + offset);
 }
+
+int main() {
+	try {
+		cout << "Passing a, 1... ";
+		cout << character('a', 1);
+
+		cout << "Passing a, -1: ";
+		cout << character('a', -1);
+
+		cout << "Passing Z, -1: ";
+		cout << character('Z', -1);
+
+		cout << "Passing ?, 5: ";
+		cout << character('?', 5);
+	}
+	catch (const InvalidCharacterException& e) {
+		cout << e.what();
+	}
+	catch (const InvalidRangeException& e) {
+		cout << e.what();
+	}
+	return 0;
+}
